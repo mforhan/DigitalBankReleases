@@ -1,0 +1,16 @@
+{
+"parameters": [
+ {
+  "name": "Banking.applicationVersion",
+  "value": "v1.0"
+ },
+ { 
+  "name": "Banking.releaseName",
+  "value": "Banking-Q4S2"
+ }
+],
+"reference": {
+  "fileName": "Online-Banking-FY19-Q4S2.json",
+  "fileSource": "PointerToRepository"
+ }
+}
