@@ -59,7 +59,7 @@
 			"ownerParties": ["michael.forhan@broadcom.com"],
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"runOnCreation": false,
-			"version": "Q4S2",
+			"version": "${Banking.releaseVersion}",
 			"name": "Online-Banking-FY19",
 			"kind": "Release"
 		},
@@ -71,21 +71,21 @@
 			"kind": "ReleaseToken"
 		},
 		{
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"scope": "RELEASE_SCOPE",
 			"value": "SWCDDTRAIN-95",
 			"name": "jira.broadcom.issue.key",
 			"kind": "ReleaseToken"
 		},
 		{
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"scope": "RELEASE_SCOPE",
 			"value": "SWCDDTRAIN",
 			"name": "jira.broadcom.Project",
 			"kind": "ReleaseToken"
 		},
 		{
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"scope": "RELEASE_SCOPE",
 			"value": "http://jira.broadcom.com/rest/api/latest/issue/1620508",
 			"name": "jira.broadcom.self.link",
@@ -93,7 +93,7 @@
 		},
 		{
 			"approvalGate": "AUTOMATIC",
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"environments": ["UAT"],
 			"skipTasksWithUnchangedApplications": true,
 			"isApprovalRequired": false,
@@ -102,7 +102,7 @@
 		},
 		{
 			"approvalGate": "SCHEDULED",
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"plannedStartDate": "05/07/2019 01:00:00 -04",
 			"recurrence": {
 				"timeZoneId": "America/Chicago",
@@ -118,7 +118,7 @@
 		},
 		{
 			"approvalGate": "MANUAL",
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"previousPhase": "System Integration Tests",
 			"environments": ["Pre-Production"],
 			"skipTasksWithUnchangedApplications": false,
@@ -128,7 +128,7 @@
 		},
 		{
 			"approvalGate": "SCHEDULED",
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"plannedStartDate": "18/07/2019 01:00:31 -04",
 			"plannedEndDate": "19/07/2019 05:00:31 -04",
 			"previousPhase": "Production Verification",
@@ -139,14 +139,14 @@
 			"kind": "Phase"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/User Acceptance",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/User Acceptance",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"isDisabled": false,
 			"name": "Manual Approval",
 			"kind": "Task"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/User Acceptance",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/User Acceptance",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}"],
 			"previousTasks": ["Manual Approval"],
 			"isDisabled": true,
@@ -166,7 +166,7 @@
 			"type": "Create JIRA Issue"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/User Acceptance",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/User Acceptance",
 			"applicationVersions": ["Local|Reporting/${BankingApplicationVersion}"],
 			"previousTasks": ["Create JIRA Issue"],
 			"isDisabled": false,
@@ -182,7 +182,7 @@
 			"type": "Run Job template"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/User Acceptance",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/User Acceptance",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}"],
 			"previousTasks": ["Deploy Reporting"],
 			"isDisabled": false,
@@ -197,7 +197,7 @@
 			"type": "Run Job template"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/User Acceptance",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/User Acceptance",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"previousTasks": ["Deploy Web"],
 			"isDisabled": false,
@@ -205,14 +205,14 @@
 			"kind": "Task"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/System Integration Tests",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/System Integration Tests",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"isDisabled": false,
 			"name": "Manual Approval",
 			"kind": "Task"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/System Integration Tests",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/System Integration Tests",
 			"previousTasks": ["Manual Approval"],
 			"isDisabled": true,
 			"name": "Add JIRA Issue Comment",
@@ -226,7 +226,7 @@
 			"type": "Add JIRA Issue Comment"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/System Integration Tests",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/System Integration Tests",
 			"applicationVersions": ["Local|Reporting/${BankingApplicationVersion}"],
 			"previousTasks": ["Add JIRA Issue Comment"],
 			"isDisabled": false,
@@ -242,7 +242,7 @@
 			"type": "Run Job template"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/System Integration Tests",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/System Integration Tests",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}"],
 			"previousTasks": ["Deploy Reporting"],
 			"isDisabled": false,
@@ -257,7 +257,7 @@
 			"type": "Run Job template"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/System Integration Tests",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/System Integration Tests",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"previousTasks": ["Deploy Web"],
 			"isDisabled": false,
@@ -265,13 +265,13 @@
 			"kind": "Task"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/Production Verification",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/Production Verification",
 			"isDisabled": false,
 			"name": "Manual Approval",
 			"kind": "Task"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S2/Production",
+			"phase": "Online-Banking-FY19/${Banking.releaseVersion}/Production",
 			"isDisabled": false,
 			"name": "Manual Approval",
 			"kind": "Task"
