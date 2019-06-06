@@ -1,38 +1,281 @@
-{"objects":[
-    {"application":"Local|Web","name":"${BankingReleaseVersion}","kind":"ApplicationVersion"},
-    {"application":"Local|Reporting","name":"${BankingReleaseVersion}","kind":"ApplicationVersion"},
-    {"application":"Local|Mobile","name":"${BankingReleaseVersion}","kind":"ApplicationVersion"},
-    {"applicationVersion":"Local|Mobile/${BankingApplicationVersion}","name":"JIRA","kind":"ContentSource","plugin":"Jira/1.2.3","endpoint":"JIRA-Broadcom","parameters":
-    {"query":"project = SW-CDD-Training AND (reporter = Mike.Forhan OR assignee = Mike.Forhan)"},"type":"JIRA JQL"},
-    {"applicationVersion":"Local|Reporting/${BankingApplicationVersion}","name":"Rally","kind":"ContentSource","plugin":"Rally Platform/2.5","endpoint":"Rally","parameters":
-    {"release":"FY19Q4-CDD Training","project":"CDD Training","iteration":"Sprint 1","additionalFilters":"","importFromChildProject":"false","type":"User Story","tags":"CDD-Training-Forhan"},"type":"Add Content"},
-    {"applicationVersion":"Local|Reporting/${BankingApplicationVersion}","commitRegularExpression":"^[ \\\\t]*([A-Za-z0-9_]+)","name":"${BankingApplicationVersion}_commitSource","kind":"CommitSource","plugin":"GitHub/1.0.2","endpoint":"Github","parameters":
-    {"owner":"mforhan","repository":"CDDTraining"},"type":"Get Commit Messages"},
-    {"ownerParties":[""],"memberParties":[""],"applicationVersions":["Local|Web/${BankingApplicationVersion}","Local|Reporting/${BankingApplicationVersion}","Local|Mobile/${BankingApplicationVersion}"],"runOnCreation":false,"version":"Q4S1","name":"Online-Banking-FY19","kind":"Release"},
-    {"release":"Online-Banking-FY19/Q4S1","scope":"RELEASE_SCOPE","value":"1620508","name":"jira.broadcom.issue.id","kind":"ReleaseToken"},
-    {"release":"Online-Banking-FY19/Q4S1","scope":"RELEASE_SCOPE","value":"SWCDDTRAIN-95","name":"jira.broadcom.issue.key","kind":"ReleaseToken"},
-    {"release":"Online-Banking-FY19/Q4S1","scope":"RELEASE_SCOPE","value":"SWCDDTRAIN","name":"jira.broadcom.Project","kind":"ReleaseToken"},
-    {"release":"Online-Banking-FY19/Q4S1","scope":"RELEASE_SCOPE","value":"http://jira.broadcom.com/rest/api/latest/issue/1620508","name":"jira.broadcom.self.link","kind":"ReleaseToken"},
-    {"approvalGate":"AUTOMATIC","release":"Online-Banking-FY19/Q4S1","environments":["UAT"],"skipTasksWithUnchangedApplications":true,"isApprovalRequired":false,"name":"User Acceptance","kind":"Phase"},
-    {"approvalGate":"SCHEDULED","release":"Online-Banking-FY19/Q4S1","plannedStartDate":"05/06/2019 01:00:00 -04","recurrence":
-    {"timeZoneId":"America/Chicago","recurrencePattern":"DAILY"},"plannedEndDate":"05/06/2019 01:01:00 -04","previousPhase":"User Acceptance","environments":["SIT"],"skipTasksWithUnchangedApplications":false,"isApprovalRequired":false,"name":"System Integration Tests","kind":"Phase"},
-    {"approvalGate":"MANUAL","release":"Online-Banking-FY19/Q4S1","previousPhase":"System Integration Tests","environments":["Pre-Production"],"skipTasksWithUnchangedApplications":false,"isApprovalRequired":false,"name":"Production Verification","kind":"Phase"},
-    {"approvalGate":"SCHEDULED","release":"Online-Banking-FY19/Q4S1","plannedStartDate":"18/06/2019 01:00:31 -04","plannedEndDate":"19/06/2019 05:00:31 -04","previousPhase":"Production Verification","environments":["Production"],"skipTasksWithUnchangedApplications":true,"isApprovalRequired":false,"name":"Production","kind":"Phase"},
-    {"phase":"Online-Banking-FY19/Q4S1/User Acceptance","applicationVersions":["Local|Web/${BankingApplicationVersion}","Local|Reporting/${BankingApplicationVersion}","Local|Mobile/${BankingApplicationVersion}"],"isDisabled":false,"name":"Manual Approval","kind":"Task"},
-    {"phase":"Online-Banking-FY19/Q4S1/User Acceptance","applicationVersions":["Local|Web/${BankingApplicationVersion}"],"previousTasks":["Manual Approval"],"isDisabled":true,"name":"Create JIRA Issue","kind":"Task","plugin":"Jira/1.2.3","endpoint":"JIRA-Broadcom","parameters":
-    {"issueType":"Story","summary":"Test for tokens, project=%jira.broadcom.Project%","projectKey":"SWCDDTRAIN","issueId":"%jira.broadcom.issue.id%","issueKey":"%jira.broadcom.issue.key%","advanced":"false","selfURI":"%jira.broadcom.self.link%"},"type":"Create JIRA Issue"},
-    {"phase":"Online-Banking-FY19/Q4S1/User Acceptance","applicationVersions":["Local|Reporting/${BankingApplicationVersion}"],"previousTasks":["Create JIRA Issue"],"isDisabled":false,"name":"Deploy Reporting","kind":"Task","plugin":"Ansible Tower/1.0.5","endpoint":"Ansible Tower","parameters":
-    {"buildOrChangeId":"%Reporting.last_successful_change%","templateName":"CDD-Training-03","templateParameters":""},"type":"Run Job template"},
-    {"phase":"Online-Banking-FY19/Q4S1/User Acceptance","applicationVersions":["Local|Web/${BankingApplicationVersion}"],"previousTasks":["Deploy Reporting"],"isDisabled":false,"name":"Deploy Web","kind":"Task","plugin":"Ansible Tower/1.0.5","endpoint":"Ansible Tower","parameters":
-    {"buildOrChangeId":"%Web.last_successful_change%","templateName":"CDD-Training-03"},"type":"Run Job template"},
-    {"phase":"Online-Banking-FY19/Q4S1/User Acceptance","applicationVersions":["Local|Web/${BankingApplicationVersion}","Local|Reporting/${BankingApplicationVersion}","Local|Mobile/${BankingApplicationVersion}"],"previousTasks":["Deploy Web"],"isDisabled":false,"name":"Manual Test","kind":"Task"},
-    {"phase":"Online-Banking-FY19/Q4S1/System Integration Tests","applicationVersions":["Local|Web/${BankingApplicationVersion}","Local|Reporting/${BankingApplicationVersion}","Local|Mobile/${BankingApplicationVersion}"],"isDisabled":false,"name":"Manual Approval","kind":"Task"},
-    {"phase":"Online-Banking-FY19/Q4S1/System Integration Tests","previousTasks":["Manual Approval"],"isDisabled":true,"name":"Add JIRA Issue Comment","kind":"Task","plugin":"Jira/1.2.3","endpoint":"JIRA-Broadcom","parameters":
-    {"issueId":"%jira.broadcom.issue.key%","comment":"ID=%jira.broadcom.issue.id% and SelfLink=%jira.broadcom.self.link%"},"type":"Add JIRA Issue Comment"},
-    {"phase":"Online-Banking-FY19/Q4S1/System Integration Tests","applicationVersions":["Local|Reporting/${BankingApplicationVersion}"],"previousTasks":["Add JIRA Issue Comment"],"isDisabled":false,"name":"Deploy Reporting","kind":"Task","plugin":"Ansible Tower/1.0.5","endpoint":"Ansible Tower","parameters":
-    {"buildOrChangeId":"%Reporting.last_successful_change%","templateName":"CDD-Training-03","templateParameters":""},"type":"Run Job template"},
-    {"phase":"Online-Banking-FY19/Q4S1/System Integration Tests","applicationVersions":["Local|Web/${BankingApplicationVersion}"],"previousTasks":["Deploy Reporting"],"isDisabled":false,"name":"Deploy Web","kind":"Task","plugin":"Ansible Tower/1.0.5","endpoint":"Ansible Tower","parameters":
-    {"buildOrChangeId":"%Web.last_successful_change%","templateName":"CDD-Training-03"},"type":"Run Job template"},
-    {"phase":"Online-Banking-FY19/Q4S1/System Integration Tests","applicationVersions":["Local|Web/${BankingApplicationVersion}","Local|Reporting/${BankingApplicationVersion}","Local|Mobile/${BankingApplicationVersion}"],"previousTasks":["Deploy Web"],"isDisabled":false,"name":"Manual Test","kind":"Task"},
-    {"phase":"Online-Banking-FY19/Q4S1/Production Verification","isDisabled":false,"name":"Manual Approval","kind":"Task"},
-    {"phase":"Online-Banking-FY19/Q4S1/Production","isDisabled":false,"name":"Manual Approval","kind":"Task"}]}
+{
+	"objects": [{
+			"application": "Local|Web",
+			"name": "${BankingReleaseVersion}",
+			"kind": "ApplicationVersion"
+		},
+		{
+			"application": "Local|Reporting",
+			"name": "${BankingReleaseVersion}",
+			"kind": "ApplicationVersion"
+		},
+		{
+			"application": "Local|Mobile",
+			"name": "${BankingReleaseVersion}",
+			"kind": "ApplicationVersion"
+		},
+		{
+			"applicationVersion": "Local|Mobile/${BankingApplicationVersion}",
+			"name": "JIRA",
+			"kind": "ContentSource",
+			"plugin": "Jira/1.2.3",
+			"endpoint": "JIRA-Broadcom",
+			"parameters": {
+				"query": "project = SW-CDD-Training AND (reporter = Mike.Forhan OR assignee = Mike.Forhan)"
+			},
+			"type": "JIRA JQL"
+		},
+		{
+			"applicationVersion": "Local|Reporting/${BankingApplicationVersion}",
+			"name": "Rally",
+			"kind": "ContentSource",
+			"plugin": "Rally Platform/2.5",
+			"endpoint": "Rally",
+			"parameters": {
+				"release": "FY19Q4-CDD Training",
+				"project": "CDD Training",
+				"iteration": "Sprint 1",
+				"additionalFilters": "",
+				"importFromChildProject": "false",
+				"type": "User Story",
+				"tags": "CDD-Training-Forhan"
+			},
+			"type": "Add Content"
+		},
+		{
+			"applicationVersion": "Local|Reporting/${BankingApplicationVersion}",
+			"commitRegularExpression": "^[ \\\\t]*([A-Za-z0-9_]+)",
+			"name": "${BankingApplicationVersion}_commitSource",
+			"kind": "CommitSource",
+			"plugin": "GitHub/1.0.2",
+			"endpoint": "Github",
+			"parameters": {
+				"owner": "mforhan",
+				"repository": "CDDTraining"
+			},
+			"type": "Get Commit Messages"
+		},
+		{
+			"ownerParties": [""],
+			"memberParties": [""],
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
+			"runOnCreation": false,
+			"version": "Q4S1",
+			"name": "Online-Banking-FY19",
+			"kind": "Release"
+		},
+		{
+			"release": "Online-Banking-FY19/Q4S1",
+			"scope": "RELEASE_SCOPE",
+			"value": "1620508",
+			"name": "jira.broadcom.issue.id",
+			"kind": "ReleaseToken"
+		},
+		{
+			"release": "Online-Banking-FY19/Q4S1",
+			"scope": "RELEASE_SCOPE",
+			"value": "SWCDDTRAIN-95",
+			"name": "jira.broadcom.issue.key",
+			"kind": "ReleaseToken"
+		},
+		{
+			"release": "Online-Banking-FY19/Q4S1",
+			"scope": "RELEASE_SCOPE",
+			"value": "SWCDDTRAIN",
+			"name": "jira.broadcom.Project",
+			"kind": "ReleaseToken"
+		},
+		{
+			"release": "Online-Banking-FY19/Q4S1",
+			"scope": "RELEASE_SCOPE",
+			"value": "http://jira.broadcom.com/rest/api/latest/issue/1620508",
+			"name": "jira.broadcom.self.link",
+			"kind": "ReleaseToken"
+		},
+		{
+			"approvalGate": "AUTOMATIC",
+			"release": "Online-Banking-FY19/Q4S1",
+			"environments": ["UAT"],
+			"skipTasksWithUnchangedApplications": true,
+			"isApprovalRequired": false,
+			"name": "User Acceptance",
+			"kind": "Phase"
+		},
+		{
+			"approvalGate": "SCHEDULED",
+			"release": "Online-Banking-FY19/Q4S1",
+			"plannedStartDate": "05/06/2019 01:00:00 -04",
+			"recurrence": {
+				"timeZoneId": "America/Chicago",
+				"recurrencePattern": "DAILY"
+			},
+			"plannedEndDate": "05/06/2019 01:01:00 -04",
+			"previousPhase": "User Acceptance",
+			"environments": ["SIT"],
+			"skipTasksWithUnchangedApplications": false,
+			"isApprovalRequired": false,
+			"name": "System Integration Tests",
+			"kind": "Phase"
+		},
+		{
+			"approvalGate": "MANUAL",
+			"release": "Online-Banking-FY19/Q4S1",
+			"previousPhase": "System Integration Tests",
+			"environments": ["Pre-Production"],
+			"skipTasksWithUnchangedApplications": false,
+			"isApprovalRequired": false,
+			"name": "Production Verification",
+			"kind": "Phase"
+		},
+		{
+			"approvalGate": "SCHEDULED",
+			"release": "Online-Banking-FY19/Q4S1",
+			"plannedStartDate": "18/06/2019 01:00:31 -04",
+			"plannedEndDate": "19/06/2019 05:00:31 -04",
+			"previousPhase": "Production Verification",
+			"environments": ["Production"],
+			"skipTasksWithUnchangedApplications": true,
+			"isApprovalRequired": false,
+			"name": "Production",
+			"kind": "Phase"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/User Acceptance",
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
+			"isDisabled": false,
+			"name": "Manual Approval",
+			"kind": "Task"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/User Acceptance",
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}"],
+			"previousTasks": ["Manual Approval"],
+			"isDisabled": true,
+			"name": "Create JIRA Issue",
+			"kind": "Task",
+			"plugin": "Jira/1.2.3",
+			"endpoint": "JIRA-Broadcom",
+			"parameters": {
+				"issueType": "Story",
+				"summary": "Test for tokens, project=%jira.broadcom.Project%",
+				"projectKey": "SWCDDTRAIN",
+				"issueId": "%jira.broadcom.issue.id%",
+				"issueKey": "%jira.broadcom.issue.key%",
+				"advanced": "false",
+				"selfURI": "%jira.broadcom.self.link%"
+			},
+			"type": "Create JIRA Issue"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/User Acceptance",
+			"applicationVersions": ["Local|Reporting/${BankingApplicationVersion}"],
+			"previousTasks": ["Create JIRA Issue"],
+			"isDisabled": false,
+			"name": "Deploy Reporting",
+			"kind": "Task",
+			"plugin": "Ansible Tower/1.0.5",
+			"endpoint": "Ansible Tower",
+			"parameters": {
+				"buildOrChangeId": "%Reporting.last_successful_change%",
+				"templateName": "CDD-Training-03",
+				"templateParameters": ""
+			},
+			"type": "Run Job template"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/User Acceptance",
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}"],
+			"previousTasks": ["Deploy Reporting"],
+			"isDisabled": false,
+			"name": "Deploy Web",
+			"kind": "Task",
+			"plugin": "Ansible Tower/1.0.5",
+			"endpoint": "Ansible Tower",
+			"parameters": {
+				"buildOrChangeId": "%Web.last_successful_change%",
+				"templateName": "CDD-Training-03"
+			},
+			"type": "Run Job template"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/User Acceptance",
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
+			"previousTasks": ["Deploy Web"],
+			"isDisabled": false,
+			"name": "Manual Test",
+			"kind": "Task"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/System Integration Tests",
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
+			"isDisabled": false,
+			"name": "Manual Approval",
+			"kind": "Task"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/System Integration Tests",
+			"previousTasks": ["Manual Approval"],
+			"isDisabled": true,
+			"name": "Add JIRA Issue Comment",
+			"kind": "Task",
+			"plugin": "Jira/1.2.3",
+			"endpoint": "JIRA-Broadcom",
+			"parameters": {
+				"issueId": "%jira.broadcom.issue.key%",
+				"comment": "ID=%jira.broadcom.issue.id% and SelfLink=%jira.broadcom.self.link%"
+			},
+			"type": "Add JIRA Issue Comment"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/System Integration Tests",
+			"applicationVersions": ["Local|Reporting/${BankingApplicationVersion}"],
+			"previousTasks": ["Add JIRA Issue Comment"],
+			"isDisabled": false,
+			"name": "Deploy Reporting",
+			"kind": "Task",
+			"plugin": "Ansible Tower/1.0.5",
+			"endpoint": "Ansible Tower",
+			"parameters": {
+				"buildOrChangeId": "%Reporting.last_successful_change%",
+				"templateName": "CDD-Training-03",
+				"templateParameters": ""
+			},
+			"type": "Run Job template"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/System Integration Tests",
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}"],
+			"previousTasks": ["Deploy Reporting"],
+			"isDisabled": false,
+			"name": "Deploy Web",
+			"kind": "Task",
+			"plugin": "Ansible Tower/1.0.5",
+			"endpoint": "Ansible Tower",
+			"parameters": {
+				"buildOrChangeId": "%Web.last_successful_change%",
+				"templateName": "CDD-Training-03"
+			},
+			"type": "Run Job template"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/System Integration Tests",
+			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
+			"previousTasks": ["Deploy Web"],
+			"isDisabled": false,
+			"name": "Manual Test",
+			"kind": "Task"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/Production Verification",
+			"isDisabled": false,
+			"name": "Manual Approval",
+			"kind": "Task"
+		},
+		{
+			"phase": "Online-Banking-FY19/Q4S1/Production",
+			"isDisabled": false,
+			"name": "Manual Approval",
+			"kind": "Task"
+		}
+	]
+}
