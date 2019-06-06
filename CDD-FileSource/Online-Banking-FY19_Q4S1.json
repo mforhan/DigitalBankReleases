@@ -56,7 +56,7 @@
 			"type": "Get Commit Messages"
 		},
 		{
-			"ownerParties": [""],
+			"ownerParties": ["michael.forhan@broadcom.com"],
 			"memberParties": [""],
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"runOnCreation": false,
