@@ -21,7 +21,7 @@
 			"plugin": "Jira/1.2.3",
 			"endpoint": "JIRA-Broadcom",
 			"parameters": {
-				"query": "project = SW-CDD-Training AND (reporter = Mike.Forhan OR assignee = Mike.Forhan)"
+				"query": "project = SW-CDD-Training AND (reporter = mf672008 OR assignee = mf672008)"
 			},
 			"type": "JIRA JQL"
 		},
