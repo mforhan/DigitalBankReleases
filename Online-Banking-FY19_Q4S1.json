@@ -57,10 +57,9 @@
 		},
 		{
 			"ownerParties": ["michael.forhan@broadcom.com"],
-			"memberParties": [""],
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"runOnCreation": false,
-			"version": "Q4S1",
+			"version": "Q4S2",
 			"name": "Online-Banking-FY19",
 			"kind": "Release"
 		},
