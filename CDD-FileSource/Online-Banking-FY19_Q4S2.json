@@ -1,17 +1,17 @@
 {
 	"objects": [{
 			"application": "Local|Web",
-			"name": "${BankingReleaseVersion}",
+			"name": "${BankingApplicationVersion}",
 			"kind": "ApplicationVersion"
 		},
 		{
 			"application": "Local|Reporting",
-			"name": "${BankingReleaseVersion}",
+			"name": "${BankingApplicationVersion}",
 			"kind": "ApplicationVersion"
 		},
 		{
 			"application": "Local|Mobile",
-			"name": "${BankingReleaseVersion}",
+			"name": "${BankingApplicationVersion}",
 			"kind": "ApplicationVersion"
 		},
 		{
