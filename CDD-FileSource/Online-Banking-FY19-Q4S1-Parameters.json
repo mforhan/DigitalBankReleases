@@ -2,15 +2,18 @@
 "parameters": [
  {
   "name": "BankingApplicationVersion",
-  "value": "v1.1"
+  "value": "v1.0"
  },
  { 
   "name": "BankingReleaseName",
-  "value": "Banking-Q4S2"
- }
+  "value": "Online-Banking-FY19"
+ },
+ {
+  "name": "Banking.releaseVersion",
+  "value": "Q4S1"
 ],
 "reference": {
-  "fileName": "Online-Banking-FY19_Q4S2.json",
+  "fileName": "Online-Banking-FY19.json",
   "fileSource": "GitHub-CDDTraining"
  } 
 }
