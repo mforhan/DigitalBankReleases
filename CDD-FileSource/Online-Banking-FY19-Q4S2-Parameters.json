@@ -7,6 +7,10 @@
  { 
   "name": "Banking.releaseName",
   "value": "Banking-Q4S2"
+ },
+ {
+  "name": "Banking.releaseVersion",
+  "value": "10"
  }
 ],
 "reference": {
