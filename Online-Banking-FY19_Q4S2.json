@@ -242,7 +242,7 @@
 			"type": "Run Job template"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S1/System Integration Tests",
+			"phase": "Online-Banking-FY19/Q4S2/System Integration Tests",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}"],
 			"previousTasks": ["Deploy Reporting"],
 			"isDisabled": false,
@@ -257,7 +257,7 @@
 			"type": "Run Job template"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S1/System Integration Tests",
+			"phase": "Online-Banking-FY19/Q4S2/System Integration Tests",
 			"applicationVersions": ["Local|Web/${BankingApplicationVersion}", "Local|Reporting/${BankingApplicationVersion}", "Local|Mobile/${BankingApplicationVersion}"],
 			"previousTasks": ["Deploy Web"],
 			"isDisabled": false,
@@ -265,13 +265,13 @@
 			"kind": "Task"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S1/Production Verification",
+			"phase": "Online-Banking-FY19/Q4S2/Production Verification",
 			"isDisabled": false,
 			"name": "Manual Approval",
 			"kind": "Task"
 		},
 		{
-			"phase": "Online-Banking-FY19/Q4S1/Production",
+			"phase": "Online-Banking-FY19/Q4S2/Production",
 			"isDisabled": false,
 			"name": "Manual Approval",
 			"kind": "Task"
