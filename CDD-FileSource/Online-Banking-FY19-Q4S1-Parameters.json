@@ -7,10 +7,6 @@
  { 
   "name": "BankingReleaseName",
   "value": "Banking-Q4S2"
- },
- {
-  "name": "BankingReleaseVersion",
-  "value": "v1.1"
  }
 ],
 "reference": {
