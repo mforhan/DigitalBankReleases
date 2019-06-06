@@ -45,7 +45,7 @@
 		{
 			"applicationVersion": "Local|Reporting/${BankingApplicationVersion}",
 			"commitRegularExpression": "^[ \\\\t]*([A-Za-z0-9_]+)",
-			"name": "${BankingApplicationVersion}_commitSource",
+			"name": "v1.0_commitSource",
 			"kind": "CommitSource",
 			"plugin": "GitHub/1.0.2",
 			"endpoint": "Github",
