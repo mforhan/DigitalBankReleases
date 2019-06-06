@@ -1,15 +1,15 @@
 {
 "parameters": [
  {
-  "name": "Banking.applicationVersion",
+  "name": "BankingApplicationVersion",
   "value": "v1.0"
  },
  { 
-  "name": "Banking.releaseName",
+  "name": "BankingReleaseName",
   "value": "Banking-Q4S2"
  },
  {
-  "name": "Banking.releaseVersion",
+  "name": "BankingReleaseVersion",
   "value": "10"
  }
 ],
