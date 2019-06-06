@@ -64,7 +64,7 @@
 			"kind": "Release"
 		},
 		{
-			"release": "Online-Banking-FY19/Q4S2",
+			"release": "Online-Banking-FY19/${Banking.releaseVersion}",
 			"scope": "RELEASE_SCOPE",
 			"value": "1620508",
 			"name": "jira.broadcom.issue.id",
