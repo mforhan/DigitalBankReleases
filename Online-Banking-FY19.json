@@ -103,12 +103,12 @@
 		{
 			"approvalGate": "SCHEDULED",
 			"release": "${Banking.releaseName}/${Banking.releaseVersion}",
-			"plannedStartDate": "05/07/2019 01:00:00 -04",
+			"plannedStartDate": "${Banking.SIT.dailyBuild.Start}",
 			"recurrence": {
 				"timeZoneId": "America/Chicago",
 				"recurrencePattern": "DAILY"
 			},
-			"plannedEndDate": "05/07/2019 01:01:00 -04",
+			"plannedEndDate": "${Banking.SIT.dailyBuild.End}",
 			"previousPhase": "User Acceptance",
 			"environments": ["SIT"],
 			"skipTasksWithUnchangedApplications": false,
@@ -129,8 +129,8 @@
 		{
 			"approvalGate": "SCHEDULED",
 			"release": "${Banking.releaseName}/${Banking.releaseVersion}",
-			"plannedStartDate": "18/07/2019 01:00:31 -04",
-			"plannedEndDate": "19/07/2019 05:00:31 -04",
+			"plannedStartDate": "${Banking.Production.Release.Start}",
+			"plannedEndDate": "${Banking.Production.Release.End}",
 			"previousPhase": "Production Verification",
 			"environments": ["Production"],
 			"skipTasksWithUnchangedApplications": true,
