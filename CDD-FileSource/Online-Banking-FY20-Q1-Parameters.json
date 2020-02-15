@@ -6,11 +6,11 @@
  },
  { 
   "name": "Banking.releaseName",
-  "value": "Online-Banking-FY19"
+  "value": "Online-Banking-FY20"
  },
  {
   "name": "Banking.releaseVersion",
-  "value": "3"
+  "value": "2"
  },
  {
   "name": "Banking.NonProd(Test).dailyBuild.Start",
@@ -39,6 +39,6 @@
  ],
  "reference": {
    "filename": "Online-Banking-FY20.json",
-   "fileSource": "Github"
+   "fileSource": "Github-Releases"
  }
 }
