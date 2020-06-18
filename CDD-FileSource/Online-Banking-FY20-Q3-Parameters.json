@@ -1,0 +1,44 @@
+{
+ "parameters":[
+  {
+  "name": "BankingApplicationVersion",
+  "value": "4"
+ },
+ { 
+  "name": "Banking.releaseName",
+  "value": "Online-Banking-FY19"
+ },
+ {
+  "name": "Banking.releaseVersion",
+  "value": "4"
+ },
+ {
+  "name": "Banking.NonProd(Test).dailyBuild.Start",
+  "value": "14/07/2020 01:00:00 -04"
+ },
+ {
+  "name": "Banking.NonProd(Test).dailyBuild.End",
+  "value": "01/08/2020 01:01:00 -04"
+ },
+{
+  "name": "Banking.UAT.dailyBuild.Start",
+  "value": "01/08/2020 01:00:00 -04"
+ },
+ {
+  "name": "Banking.UAT.dailyBuild.End",
+  "value": "20/08/2020 01:01:00 -04"
+ },
+ {
+  "name": "Banking.Prod.Release.Start",
+  "value": "30/08/2020 11:00:31 -04"
+ },
+ {
+  "name": "Banking.Prod.Release.End",
+  "value": "01/09/2020 05:00:31 -04"
+ }
+ ],
+ "reference": {
+   "filename": "Online-Banking-FY20.json",
+   "fileSource": "Github"
+ }
+}
